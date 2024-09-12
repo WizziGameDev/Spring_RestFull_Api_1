@@ -1,0 +1,14 @@
+Pada bagian andDo(result -> {...}), berikut alurnya:
+
+result.getResponse().getContentAsString():
+
+result adalah hasil dari eksekusi MockMvc, dan respons yang dikembalikan oleh server disimpan di dalam result.getResponse().
+getContentAsString() mengambil isi dari respons dalam bentuk JSON string.
+objectMapper.readValue(result.getResponse().getContentAsString(), new TypeReference<>() {}):
+
+Di sini, objectMapper.readValue digunakan untuk mengubah (deserialize) JSON string menjadi objek Java.
+Dalam kasus ini, JSON tersebut diubah menjadi objek WebResponse<TokenResponse>.
+TypeReference<>() {} digunakan untuk menangani tipe generik WebResponse<TokenResponse>, yang artinya data di dalam objek WebResponse adalah tipe TokenResponse.
+
+=== ARGUMENT RESOLVER ===
+Ketika suatu method memerlukan Object tertentu akan memanggil Argument Resolver terlebih dahulu
