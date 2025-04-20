@@ -1,29 +1,27 @@
-📄 API Documentation Patients
 
-⚙️ Teknologi dan Konfigurasi
+# 📄 API Documentation Patients
 
-☕ Language & Framework: Java (Spring Boot) 
+## ⚙️ Teknologi dan Konfigurasi
 
-🗄️ Database: PostgreSQL 
+- **☕ Language & Framework**: Java (Spring Boot)
+- **🗄️ Database**: PostgreSQL
+- **⚡ Caching**: Redis is used to store cached responses from GET /api/patients to improve data retrieval speed.
+- **✅ Validation**: Field-level validation is implemented to ensure data integrity during both creation and updates.
+- **⚡ Concurrency**: Supports Virtual Threads to enhance performance and efficiency in handling concurrent requests.
 
-⚡ Caching: Redis is used to store cached responses from GET /api/patients to improve data retrieval speed. 
+## 📥 Endpoint
 
-✅ Validation: Field-level validation is implemented to ensure data integrity during both creation and updates.
+### 🔹 GET /api/patients
 
-⚡ Concurrency: Supports Virtual Threads to enhance performance and efficiency in handling concurrent requests.
-
-📥 Endpoint
-
-🔹 GET /api/patients
-
-📝 Description
+#### 📝 Description
 
 Retrieve all patient data from the system.
 
-✅ Response
+#### ✅ Response
 
 Status Code: 200 OK
 
+```json
 {
   "statusCode": 200,
   "data": [
@@ -75,23 +73,25 @@ Status Code: 200 OK
   ],
   "errors": null
 }
+```
 
-📥 Endpoint
+---
 
-🔹 GET /api/v1/patient/{slug}
+### 🔹 GET /api/v1/patient/{slug}
 
-📝 Description
+#### 📝 Description
 
 Retrieving patient data based on unique slug.
 
-📌 Example Endpoint
+#### 📌 Example Endpoint
 
 GET localhost:8085/api/v1/patient/patient-002
 
-✅ Success Response
+#### ✅ Success Response
 
 Status Code: 200 OK
 
+```json
 {
   "statusCode": 200,
   "data": {
@@ -105,11 +105,13 @@ Status Code: 200 OK
   },
   "errors": null
 }
+```
 
-❌ Error Response
+#### ❌ Error Response
 
 Status Code: 404 Not Found
 
+```json
 {
   "statusCode": 404,
   "data": null,
@@ -117,19 +119,21 @@ Status Code: 404 Not Found
     "Patient Not Found"
   ]
 }
+```
 
-📥 Endpoint
+---
 
-🔹 POST /api/v1/patient
+### 🔹 POST /api/v1/patient
 
-📝 Description
+#### 📝 Description
 
 Adding new patient data into the system.
 
-📌 Example Endpoint
+#### 📌 Example Endpoint
 
 POST localhost:8085/api/v1/patient
 
+```json
 {
   "name": "Dimas Anjay Mabar",
   "email": "dimas@gmail.com",
@@ -138,11 +142,13 @@ POST localhost:8085/api/v1/patient
   "gender": "Male",
   "birthDate": 631152000000
 }
+```
 
-✅ Success Response
+#### ✅ Success Response
 
 Status Code: 200 OK
 
+```json
 {
   "statusCode": 200,
   "data": {
@@ -156,13 +162,15 @@ Status Code: 200 OK
   },
   "errors": null
 }
+```
 
-❌ Validation Error Response
+#### ❌ Validation Error Response
 
 Status Code: 400 Bad Request
 
-❌ Example Request Not Valid:
+##### ❌ Example Request Not Valid:
 
+```json
 {
   "name": "",
   "email": "dimas",
@@ -171,9 +179,11 @@ Status Code: 400 Bad Request
   "gender": "Male",
   "birthDate": 631152000000
 }
+```
 
-❌ Response Validation Error:
+##### ❌ Response Validation Error:
 
+```json
 {
   "statusCode": 400,
   "data": null,
@@ -184,19 +194,21 @@ Status Code: 400 Bad Request
     "address": "Address can't be blank"
   }
 }
+```
 
-📥 Endpoint
+---
 
-🔹 PUT /api/v1/patient/{slug}
+### 🔹 PUT /api/v1/patient/{slug}
 
-📝 Description
+#### 📝 Description
 
 Update patient data based on slug.
 
-📌 Example Endpoint
+#### 📌 Example Endpoint
 
 PUT localhost:8085/api/v1/patient/dimas-anjay-mabar-9015
 
+```json
 {
   "name": "Dimas anjay baru",
   "email": "dimasbaru@gmail.com",
@@ -205,11 +217,13 @@ PUT localhost:8085/api/v1/patient/dimas-anjay-mabar-9015
   "gender": "Male",
   "birthDate": 631152000000
 }
+```
 
-✅ Success Response
+#### ✅ Success Response
 
 Status Code: 200 OK
 
+```json
 {
   "statusCode": 200,
   "data": {
@@ -223,11 +237,13 @@ Status Code: 200 OK
   },
   "errors": null
 }
+```
 
-❌ Error Response
+#### ❌ Error Response
 
 Status Code: 404 Not Found
 
+```json
 {
   "statusCode": 404,
   "data": null,
@@ -235,33 +251,37 @@ Status Code: 404 Not Found
     "Patient Not Found"
   ]
 }
+```
 
-📥 Endpoint
+---
 
-🔹 DELETE /api/v1/patient/{slug}
+### 🔹 DELETE /api/v1/patient/{slug}
 
-📝 Description
+#### 📝 Description
 
 Deleting patient data based on slug.
 
-📌 Example Endpoint
+#### 📌 Example Endpoint
 
 DELETE localhost:8085/api/v1/patient/dimas-anjay-baru-5804
 
-✅ Success Response
+#### ✅ Success Response
 
 Status Code: 200 OK
 
+```json
 {
   "statusCode": 200,
   "data": "Patient Deleted Successfully",
   "errors": null
 }
+```
 
-❌ Error Response
+#### ❌ Error Response
 
 Status Code: 404 Not Found
 
+```json
 {
   "statusCode": 404,
   "data": null,
@@ -269,3 +289,4 @@ Status Code: 404 Not Found
     "Patient Not Found"
   ]
 }
+```
