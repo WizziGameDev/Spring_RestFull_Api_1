@@ -1,7 +1,7 @@
 
 # 📄 API Documentation Patients
 
-## ⚙️ Teknologi dan Konfigurasi
+## ⚙️ Technology and Configuration
 
 - **☕ Language & Framework**: Java (Spring Boot)
 - **🗄️ Database**: PostgreSQL
